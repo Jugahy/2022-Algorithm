@@ -1,15 +1,33 @@
-m = 8
-k = 3
+# My Code
+def BigNum(m, k, num):
+    i, j, answer = 0, 0, 0
+    num.sort(reverse=True)
 
-num = [2, 4, 5, 4, 6]
-answer = 0
+    while i < m:
+        while j < k and i < m:
+            answer += num[0]
+            j += 1
+            i += 1
+        answer += num[1]
+        i += 1
+        j = 0
 
-num.sort(reverse = True)
+    return answer
 
-print(num)
-while m <= 8:
-    while k <= 3:
-        answer += num[0]
-    answer += num[1]
+
+# Good Code
+def BigNum2(n, m, k, data):
+    data.sort()
+    first = data[n - 1]
+    second = data[n - 2]
+
+    count = int(m / (k + 1)) * k
+    count += m % (k + 1)
+
+    result = 0
+    result += count * first
+    result += (m - count) * second
+
+    return result
 
 
