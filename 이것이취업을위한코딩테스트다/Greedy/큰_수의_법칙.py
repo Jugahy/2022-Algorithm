@@ -11,7 +11,6 @@ def BigNum(m, k, num):
         answer += num[1]
         i += 1
         j = 0
-
     return answer
 
 
@@ -27,7 +26,6 @@ def BigNum2(n, m, k, data):
     result = 0
     result += count * first
     result += (m - count) * second
-
     return result
 
 
