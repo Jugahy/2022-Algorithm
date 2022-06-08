@@ -1,4 +1,4 @@
-# My Code
+# My Code (Brute Forcing) = Good Code
 def solution(N):
     count = 0
 
