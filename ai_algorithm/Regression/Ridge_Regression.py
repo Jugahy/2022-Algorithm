@@ -1,23 +1,23 @@
-import numpy as np
-from sklearn.linear_model import LinearRegression
+from sklearn.datasets import load_boston
+from sklearn.linear_model import Ridge, RidgeCV, Lasso, LassoCV, ElasticNet, ElasticNetCV
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-# import warnings warnings.filterwarnings("ignore", category=DeprecationWarning)
+import numpy as np
+
+boston = load_boston()
+x, y = boston.data, boston.target
+xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.2, random_state=3)
+
+alphas = [0.0001, 0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 1]
+
+for a in alphas:
+    model = Ridge(alpha=a).fit(x, y)
+    score = model.score(x, y)
+    pred_y = model.predict(x)
+    mse = mean_squared_error(y, pred_y)
+    print("Alpha:{0:.4f}, R2:{1:.2f}, MSE:{2:.2f}, RMSE:{3:.2f}"
+          .format(a, score, mse, np.sqrt(mse)))
 
 
-malaysian = np.array([3.4270, 0.034300, 0, 82.707, 26.933, 2.2276, 1837.7], dtype=float).reshape((-1, 1))
-korea = np.array([1000, 10, 0, 24134, 7859, 650, 536241], dtype=float).reshape((-1, 1))
 
-for i,c in enumerate(malaysian):
-	print("%s malaysian = %s korea" % (c, korea[i]))
-
-from sklearn.linear_model import LinearRegression
-# create a linear regression model
-model = LinearRegression()
-
-# train data
-model.fit(korea, malaysian)
-
-# predict data - 30.0 pounds to kilograms
-result_malaysian = model.predict([[12345]])
-
-print('12345 korea >> %s malaysian' %(result_malaysian[0][0]))
