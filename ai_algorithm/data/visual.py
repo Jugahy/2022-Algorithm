@@ -74,28 +74,64 @@ rc('font', family=font)
 # barhchart(xlabel, y)
 
 
-import matplotlib.pyplot as plt
-import numpy
-
-
+# import matplotlib.pyplot as plt
+# import numpy
+#
+#
 # multi barhchart
-a = [140,256,323,456,578]
-b = [520,432,343,254,165]
+# a = [945, 680, 587, 726, 190, 440, 91, 486, 2282, 501, 460, 744, 781, 642, 700, 553, 165]
+# b = [134, 34, 177, 342, 23, 194, 3, 59, 528, 95, 69, 79, 259, 137, 133, 48, 80]
+#
+# label = ["서울", "부산", "대구", "인천", "광주", "대전", "세종", "울산", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"]
+#
+# plt.figure()
+#
+# y = np.arange(len(label))
+#
+# plt.barh(y-0.2, a, label="교육기관", height=0.4, color="#3333ff", alpha=0.2)
+# plt.barh(y+0.2, b, label="아동보호전문기관", height=0.4, color="#0066ff")
+#
+# plt.legend()
+# plt.ylabel(label)
+# plt.xlabel("아동")
+# # plt.xlim(0, 7)
+# plt.title("아동폭력줄이자")
+# plt.grid()
+# plt.show()
 
-label = ["서울", "경기", "전북", "전남", "제주"]
+# import math
+#
+# a = [3837, 3334, 2208, 1745, 2576, 3208, 3746, 3523, 3430, 3480, 3116, 3428, 2184, 2383, 3500, 3866, 3542, 3278]
+# ave = sum(a)/18
+#
+# total = 0
+# for i in range(len(a)):
+#     total += (a[i] - ave) ** 2
+#
+# print("평균 :", sum(a)/18)
+# print("분산 :", (1/(len(a)-1) * total))
+# print("표준편차 :", math.sqrt(1/(len(a)-1) * total))
+# c = math.sqrt(1/(len(a)-1) * total)
+#
+# print("검정통계량 :", (ave - 2800)/(c/math.sqrt(len(a))))
 
-plt.figure()
 
-y = np.arange(len(label))
+import pandas as pd
 
-plt.barh(y-0.2, a, label="초중고", height=0.4, color="#3333ff", alpha=0.2)
-plt.barh(y+0.2, b, label="아동보호", height=0.4, color="#0066ff")
+import matplotlib.pyplot as plot
 
-plt.legend()
-plt.ylabel("월")
-plt.xlabel("아동")
-# plt.xlim(0, 7)
-plt.title("아동폭력줄이자")
-plt.grid()
-plt.show()
+# Python dictionary
 
+inflationAndGrowth = {"신고 수": [5533, 6284, 443,653,1945,216,28,367,10254,39,611,401,55,1127]}
+
+index = ["아동본인", "부모", "형제자매", "친인척", "이웃·친구", "경찰", "종교인", "사회복지관련 종사자", "아동보호전문기관종사자", "의료사회복지사", "낯선사람", "익명", "법원", "기타"]
+
+# Python dictionary into a pandas DataFrame
+
+dataFrame = pd.DataFrame(data=inflationAndGrowth);
+
+dataFrame.index = index;
+
+dataFrame.plot.barh(rot=15, title="비신고의무자의 신고 수");
+
+plot.show(block=True);
