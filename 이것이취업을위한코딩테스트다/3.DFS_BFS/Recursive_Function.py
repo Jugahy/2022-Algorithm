@@ -1,7 +1,7 @@
 # 재귀 함수
 
 
-# basic of recursive function
+# basic of recursive function!
 def recursive():
     print("재귀 함수는 자기 자신을 불러옵...")
     recursive()
